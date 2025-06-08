@@ -2,12 +2,21 @@
 
 import { useEffect, useState } from "react";
 
+export type Group =
+  | "default"
+  | "exclusive"
+  | "expansion"
+  | "ported"
+  | "custom"
+  | "pending";
+
 export interface Abomination {
   name: string;
   slug: string;
   description: string;
   image: string;
   danger: number;
+  group: Group;
 }
 
 export function useAbominations(onlyEnabled: boolean = true) {
@@ -20,8 +29,8 @@ export function useAbominations(onlyEnabled: boolean = true) {
         if (onlyEnabled) {
           setAbominations(
             data.filter(
-              (abom: Abomination & { enabled?: boolean }) => abom.enabled
-            )
+              (abom: Abomination & { enabled?: boolean }) => abom.enabled,
+            ),
           );
         } else {
           setAbominations(data);

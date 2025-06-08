@@ -1,11 +1,52 @@
 [
   {
+    "name": "Patient 0",
+    "slug": "patient-0",
+    "description": "Was it really the first zombie? No one can tell. It sure turned the hospital into an infected nightmare.",
+    "image": "/images/abominations/patient-0.png",
+    "danger": 1,
+    "ability": "The Patient 0 has no special rule.",
+    "group": "default",
+    "enabled": true
+  },
+  {
+    "name": "Abominacop",
+    "slug": "abominacop",
+    "description": "An undead riot-gear enforcer; it always has top target priority, shielding lesser zombies.",
+    "image": "/images/abominations/abominacop.png",
+    "danger": 2,
+    "ability": "The Abominacop goes first in targeting priority order, protecting all lesser zombies in its zone.",
+    "group": "default",
+    "enabled": true
+  },
+  {
+    "name": "Abominawild",
+    "slug": "abominawild",
+    "description": "The Abominawild is a tough customer, requiring focused firepower. Literally!",
+    "image": "/images/abominations/abominawild.png",
+    "danger": 1,
+    "ability": "Molotov thrown in the Abominawild’s Zone, only kill the Abominawild. Other actors are not affected.",
+    "group": "default",
+    "enabled": true
+  },
+  {
+    "name": "Hobomination",
+    "slug": "hobomination",
+    "description": "The Hobomination is so vile, in every way, that standing next to it is unbearable.",
+    "image": "/images/abominations/hobomination.png",
+    "danger": 2,
+    "ability": "Survivors in the Hobomination’s Zone cannot perform Combat Actions.",
+    "group": "default",
+    "enabled": true
+  },
+  {
     "name": "Abominamom",
     "slug": "abominamom",
     "description": "",
-    "danger": 2,
+    "danger": 8,
     "ability": "If a Survivor starts their turn in line of sight or in the same building as this Abomination, they may perform only 1 Move Action that turn.",
     "model": "https://cults3d.com/en/3d-model/art/abominamom",
+    "group": "custom",
     "enabled": true
   },
   {
@@ -15,6 +56,7 @@
     "danger": 2,
     "ability": "If a Survivor is in a straight, unobstructed line, move 2 zones per activation toward them, smashing doors. Still attacks normally.",
     "model": "https://cults3d.com/en/3d-model/art/kimbomination",
+    "group": "custom",
     "enabled": true
   },
   {
@@ -23,6 +65,7 @@
     "description": "",
     "danger": 1,
     "ability": "The Batabomination cannot trace Lines Of Sight. Each time the Batabomination gets an Activation, check the Zone with the most Noise tokens. Batabomination has as much Actions as Noise tokens in the corresponding Zone.",
+    "group": "exclusive",
     "enabled": true
   },
   {
@@ -31,6 +74,40 @@
     "description": "",
     "danger": 1,
     "ability": "The Bigfoot doesn’t spawn if a Survivor has a Line Of Sight on its Spawning Zone. In that case, its Abomination card is shuffled back in the Abomination deck. Don’t draw another Zombie card for the Zone.",
+    "group": "exclusive",
+    "enabled": true
+  },
+  {
+    "name": "Abominatman",
+    "slug": "abominatman",
+    "description": "",
+    "actions": 1,
+    "damage": 1,
+    "danger": 1,
+    "ability": "During its activation, if starts its movement in or adjacent to a Dark Zone, it teleports directly to the nearest Dark Zone that contains Survivors .",
+    "group": "custom",
+    "enabled": true
+  },
+  {
+    "name": "Abominacommander",
+    "slug": "abominacommander",
+    "actions": 1,
+    "damage": 1,
+    "description": "",
+    "danger": 2,
+    "ability": "Attack whenever they activate while having a Line Of Sight on a Survivor at Range 0-1. Then, perform an Attack on Survivors in ALL Zones at Range 0-1.",
+    "group": "ported",
+    "enabled": true
+  },
+  {
+    "name": "Abominabunny",
+    "slug": "abominabunny",
+    "description": "",
+    "actions": 1,
+    "damage": 10,
+    "ability": "When Abominabunny attacks, it instantly kills EVERY Survivor in its Zone. Only a molotov effect is able to kill it.",
+    "group": "ported",
+    "danger": 4,
     "enabled": true
   },
   {
@@ -94,43 +171,11 @@
     "ability": "Ignores Dark Zones and Night rules for Line of Sight. At the end of its Activation, remove from the board 1 Survivor it has LoS to (players choose). At the end of its next Activation, return the Survivor to the same Zone. Another Survivor is then abducted (it can be the same one)."
   },
   {
-    "name": "Abominacop",
-    "slug": "abominacop",
-    "description": "An undead riot-gear enforcer; it always has top target priority, shielding lesser zombies.",
-    "image": "/images/abominations/abominacop.png",
-    "danger": 2,
-    "ability": "The Abominacop goes first in targeting priority order, protecting all lesser zombies in its zone."
-  },
-  {
-    "name": "Abominawild",
-    "slug": "abominawild",
-    "description": "The Abominawild is a tough customer, requiring focused firepower. Literally!",
-    "image": "/images/abominations/abominawild.png",
-    "danger": 1,
-    "ability": "Molotov thrown in the Abominawild’s Zone, only kill the Abominawild. Other actors are not affected."
-  },
-  {
-    "name": "Patient 0",
-    "slug": "patient-0",
-    "description": "Was it really the first zombie? No one can tell. It sure turned the hospital into an infected nightmare.",
-    "image": "/images/abominations/patient-0.png",
-    "danger": 1,
-    "ability": "The Patient 0 has no special rule."
-  },
-  {
     "name": "Chupacabra",
     "slug": "chupacabra",
     "description": "The legends were true, strange things bump in the night. Among them are chupacabras, the famous blood-drinking monsters. I’m eager to add one to my collection. Do I look like a goat to you?",
     "danger": 1,
     "ability": "The Chupacabra cannot be eliminated as long as it is in a Dark Zone."
-  },
-  {
-    "name": "Hobomination",
-    "slug": "hobomination",
-    "description": "The Hobomination is so vile, in every way, that standing next to it is unbearable.",
-    "image": "/images/abominations/hobomination.png",
-    "danger": 2,
-    "ability": "Survivors in the Hobomination’s Zone cannot perform Combat Actions."
   },
   {
     "name": "Killer Clown",
@@ -146,7 +191,6 @@
     "danger": 4,
     "ability": ""
   },
-
   {
     "name": "Berserker Abomination",
     "slug": "berserker-abomination",
@@ -162,17 +206,6 @@
     "danger": 3,
     "ability": "All standard Zombies standing in its Zone can become Toxic Zombies."
   },
-
-  {
-    "name": "Abominabunny",
-    "slug": "abominabunny",
-    "description": "",
-    "actions": 1,
-    "damage": 10,
-    "ability": "When Abominabunny attacks, it instantly kills EVERY Survivor in its Zone. Only a molotov effect is able to kill it.",
-    "danger": 4,
-    "enabled": true
-  },
   {
     "name": "Werezombie",
     "slug": "werezombie",
@@ -182,16 +215,6 @@
     "image": "/images/abominations/werezombie.png",
     "danger": 2,
     "ability": "When it is killed, it is replaced by a different Abomination."
-  },
-  {
-    "name": "Abominacommander",
-    "slug": "abominacommander",
-    "actions": 1,
-    "damage": 1,
-    "description": "",
-    "danger": 2,
-    "ability": "Attack whenever they activate while having a Line Of Sight on a Survivor at Range 0-1. Then, perform an Attack on Survivors in ALL Zones at Range 0-1.",
-    "enabled": true
   },
   {
     "name": "Abominoidon",
@@ -320,13 +343,39 @@
     "ability": "Whenever the Babyface Abomination is eliminated, all Xenos on the board immediately get an extra Activation. "
   },
   {
-    "name": "Abominatman",
-    "slug": "abominatman",
+    "name": "Nightmare Horse",
+    "slug": "nightmare-horse",
     "description": "",
     "actions": 1,
-    "damage": 1,
-    "danger": 1,
-    "ability": "During its activation, if starts its movement in or adjacent to a Dark Zone, it teleports directly to the nearest Dark Zone that contains Survivors .",
-    "enabled": true
+    "damage": 2,
+    "danger": 6,
+    "ability": "As long as the Nightmare Horse ison the board, all Zombies normallydealing 1 Wound, deal 2 Woundsinstead."
+  },
+  {
+    "name": "Melting Pot",
+    "slug": "melting-pot",
+    "description": "",
+    "actions": 1,
+    "damage": 0,
+    "danger": 4,
+    "ability": "Spawns 2 walkers every activation."
+  },
+  {
+    "name": "Abominape",
+    "slug": "abominape",
+    "description": "",
+    "actions": 1,
+    "damage": 0,
+    "danger": 6,
+    "ability": "Prevents a survivor in it's zone from acting."
+  },
+  {
+    "name": "Wendigo",
+    "slug": "wendigo",
+    "description": "",
+    "actions": 1,
+    "damage": 0,
+    "danger": 6,
+    "ability": "-1 die to combat, passive"
   }
 ]

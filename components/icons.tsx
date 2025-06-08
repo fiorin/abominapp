@@ -12,12 +12,12 @@ export const Logo: React.FC<IconSvgProps> = ({
 }) => {
   return (
     <Image
-      src="/favicon-32x32.png"
       alt="Logo"
-      width={Number(width) || size}
-      height={Number(height) || size}
       className={className}
+      height={Number(height) || size}
+      src="/favicon-32x32.png"
       style={style}
+      width={Number(width) || size}
     />
   );
 };

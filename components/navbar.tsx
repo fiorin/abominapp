@@ -15,9 +15,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 
-import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
-
 import { useAbominations } from "@/hooks/useAbominations";
 
 export const Navbar = () => {
@@ -27,8 +25,8 @@ export const Navbar = () => {
   const searchInput = (
     <Autocomplete
       aria-label="Search abominations"
-      placeholder="Search..."
       className="w-full max-w-xs"
+      placeholder="Search..."
       onSelectionChange={(key) => {
         if (key) {
           router.push(`/abominations/${key}`);
@@ -55,11 +53,11 @@ export const Navbar = () => {
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           <NavbarItem>
             <NextLink
-              href="/abominations"
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium"
+                "data-[active=true]:text-primary data-[active=true]:font-medium",
               )}
+              href="/abominations"
             >
               Abominations
             </NextLink>
