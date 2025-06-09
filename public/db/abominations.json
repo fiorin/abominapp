@@ -60,6 +60,15 @@
     "enabled": true
   },
   {
+    "name": "Screamer",
+    "slug": "screamer",
+    "description": "An undead creature that emits a terrifying scream, causing panic among survivors.",
+    "danger": 2,
+    "ability": "When activated, if a Survivor is in line of sight, all Zombies in that zone will be activated first.",
+    "group": "custom",
+    "enabled": true
+  },
+  {
     "name": "Batabomination",
     "slug": "batabomination",
     "description": "",
@@ -108,6 +117,17 @@
     "ability": "When Abominabunny attacks, it instantly kills EVERY Survivor in its Zone. Only a molotov effect is able to kill it.",
     "group": "ported",
     "danger": 4,
+    "enabled": true
+  },
+  {
+    "name": "Abominalpha",
+    "slug": "abominalpha",
+    "actions": 3,
+    "damage": 1,
+    "description": "",
+    "danger": 9,
+    "ability": "As long as the Abominalpha is on the board, all cards that would spawn Runners, spawn dogz instead.",
+    "group": "ported",
     "enabled": true
   },
   {
@@ -233,15 +253,6 @@
     "description": "",
     "danger": 4,
     "ability": "Spawns 1 Zone away from the noisiest Zone on the board, in a Zone with an open passage to it."
-  },
-  {
-    "name": "Abominalpha",
-    "slug": "abominalpha",
-    "actions": 3,
-    "damage": 1,
-    "description": "",
-    "danger": 4,
-    "ability": "As long as the Abominalpha is on the board, all cards that would spawn Runners, spawn dogz instead."
   },
   {
     "name": "Horde Brother",
