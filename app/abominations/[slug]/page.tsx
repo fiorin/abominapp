@@ -16,6 +16,7 @@ export default function AbominationDetailPage() {
   const groupColors: Record<string, string> = {
     default: "text-yellow-500",
     expansion: "text-orange-500",
+    exclusive: "text-purple-500",
     ported: "text-blue-500",
     custom: "text-green-500",
     pending: "text-red-500",

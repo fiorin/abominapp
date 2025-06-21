@@ -43,7 +43,7 @@
     "name": "Abominamom",
     "slug": "abominamom",
     "description": "",
-    "danger": 8,
+    "danger": 4,
     "ability": "If a Survivor starts their turn in line of sight or in the same building as this Abomination, they may perform only 1 Move Action that turn.",
     "model": "https://cults3d.com/en/3d-model/art/abominamom",
     "group": "custom",
@@ -72,7 +72,7 @@
     "name": "Batabomination",
     "slug": "batabomination",
     "description": "",
-    "danger": 1,
+    "danger": 3,
     "ability": "The Batabomination cannot trace Lines Of Sight. Each time the Batabomination gets an Activation, check the Zone with the most Noise tokens. Batabomination has as much Actions as Noise tokens in the corresponding Zone.",
     "group": "exclusive",
     "enabled": true
@@ -103,7 +103,7 @@
     "actions": 1,
     "damage": 1,
     "description": "",
-    "danger": 2,
+    "danger": 3,
     "ability": "Attack whenever they activate while having a Line Of Sight on a Survivor at Range 0-1. Then, perform an Attack on Survivors in ALL Zones at Range 0-1.",
     "group": "ported",
     "enabled": true
@@ -125,7 +125,7 @@
     "actions": 3,
     "damage": 1,
     "description": "",
-    "danger": 9,
+    "danger": 5,
     "ability": "As long as the Abominalpha is on the board, all cards that would spawn Runners, spawn dogz instead.",
     "group": "ported",
     "enabled": true
@@ -135,21 +135,36 @@
     "slug": "black-dog",
     "description": "Rumored to appear during electrical storms, the Black Dog is known as a death omen. No wonder its dark and shaggy shape has often been seen since the zombies took over. Its mere presence seems to sow death all around it, even when it’s not personally tearing survivor’s throats out. That’s not an excuse to run from it, though: blast it and enjoy the rest of your day!",
     "danger": 5,
-    "ability": "As long as the Black Dog is on the board, Survivors are eliminated upon receiving any amount of Wounds. Wounds previously received are not affected."
+    "ability": "As long as the Black Dog is on the board, Survivors are eliminated upon receiving any amount of Wounds. Wounds previously received are not affected.",
+    "enabled": true,
+    "group": "exclusive"
   },
   {
     "name": "Cthulhu",
     "slug": "cthulhu",
     "description": "",
     "danger": 5,
-    "ability": "When Cthulhu spawns, set a dice apart, on its 6 side. Each time Cthulhu activates, the dice result is lowered by 1 point. If the dice result is lowered to 0 before Cthulhu is eliminated, the game is lost."
+    "ability": "When Cthulhu spawns, set a dice apart, on its 6 side. Each time Cthulhu activates, the dice result is lowered by 1 point. If the dice result is lowered to 0 before Cthulhu is eliminated, the game is lost.",
+    "group": "exclusive",
+    "enabled": true
+  },
+  {
+    "name": "Shark",
+    "slug": "shark",
+    "description": "",
+    "danger": 5,
+    "ability": "If a Survivor takes 1 or more Wounds within Line of Sight of the Shark, the Shark immediately gains an extra activation.",
+    "group": "custom",
+    "enabled": true
   },
   {
     "name": "Lankyman",
     "slug": "lankyman",
     "description": "Slender nightmare; raises the Accuracy of all Survivor weapons by +1 (max 6).",
     "danger": 3,
-    "ability": "Increases the hit threshold of all Survivor attacks by +1 (max 6+)."
+    "ability": "Increases the hit threshold of all Survivor attacks by +1 (max 6+).",
+    "enabled": true,
+    "group": "exclusive"
   },
   {
     "name": "Bearmanboar",
@@ -164,7 +179,9 @@
     "slug": "actual-cannibal",
     "description": "",
     "danger": 2,
-    "ability": "Roll 3 dice whenever the Actual Cannibal is eliminated. If any of these die rolls a “1”, place the Actual Cannibal on the Starting Spawn Zone."
+    "ability": "Roll 3 dice whenever the Actual Cannibal is eliminated. If any of these die rolls a “1”, place the Actual Cannibal on the Starting Spawn Zone.",
+    "enabled": true,
+    "group": "exclusive"
   },
   {
     "name": "Mummy",
@@ -180,7 +197,9 @@
     "description": "",
     "image": "/images/abominations/greenwich-crew.png",
     "danger": 3,
-    "ability": "Right after the Greenwich Crew is eliminated, place 5 Runners in the Zone it occupied."
+    "ability": "Right after the Greenwich Crew is eliminated, place 5 Runners in the Zone it occupied.",
+    "enabled": true,
+    "group": "exclusive"
   },
   {
     "name": "Abductor",
@@ -188,35 +207,45 @@
     "description": "",
     "image": "/images/abominations/abductor.png",
     "danger": 4,
-    "ability": "Ignores Dark Zones and Night rules for Line of Sight. At the end of its Activation, remove from the board 1 Survivor it has LoS to (players choose). At the end of its next Activation, return the Survivor to the same Zone. Another Survivor is then abducted (it can be the same one)."
+    "ability": "Ignores Dark Zones and Night rules for Line of Sight. At the end of its Activation, remove from the board 1 Survivor it has LoS to (players choose). At the end of its next Activation, return the Survivor to the same Zone. Another Survivor is then abducted (it can be the same one).",
+    "enabled": true,
+    "group": "expansion"
   },
   {
     "name": "Chupacabra",
     "slug": "chupacabra",
     "description": "The legends were true, strange things bump in the night. Among them are chupacabras, the famous blood-drinking monsters. I’m eager to add one to my collection. Do I look like a goat to you?",
     "danger": 1,
-    "ability": "The Chupacabra cannot be eliminated as long as it is in a Dark Zone."
+    "ability": "The Chupacabra cannot be eliminated as long as it is in a Dark Zone.",
+    "enabled": true,
+    "group": "expansion"
   },
   {
     "name": "Killer Clown",
     "slug": "killer-clown",
     "description": "I remember him. He used to lurk on the street corner all day long, laughing like a madman, stalking people, and playing in the sewage. The guy is still both creepy and disgusting. And now, he smells, too!",
     "danger": 3,
-    "ability": "Survivors cannot use the last Skill they earned through Adrenaline."
+    "ability": "Survivors cannot use the last Skill they earned through Adrenaline.",
+    "enabled": true,
+    "group": "expansion"
   },
   {
     "name": "Sewer Crocodile",
     "slug": "sewer-crocodile",
     "description": "A giant gator that bursts up through manholes, attacking from below.",
     "danger": 4,
-    "ability": ""
+    "ability": "Give this card to a Survivor at random. The Sewer Crocodile considers the designated Survivor’s Zone as its target Zone, ignoring other Survivors. The Sewer Crocodile has 2 Actions.",
+    "enabled": true,
+    "group": "expansion"
   },
   {
     "name": "Berserker Abomination",
     "slug": "berserker-abomination",
     "description": "",
     "danger": 0,
-    "ability": ""
+    "ability": "Berserker Zombies are immune to Ranged weapon Damage, except for weapons killing everything in their target Zone. Moves 2 zones, but only 1 action.",
+    "enabled": true,
+    "group": "default"
   },
   {
     "name": "Toxic Abomination",
@@ -224,7 +253,9 @@
     "description": "",
     "actions": 1,
     "danger": 3,
-    "ability": "All standard Zombies standing in its Zone can become Toxic Zombies."
+    "ability": "Upon elimination, a Toxic Zombie inflicts 1 Wound on survivors in the same Zone. All standard Zombies standing in its Zone can become Toxic Zombies.",
+    "enabled": true,
+    "group": "default"
   },
   {
     "name": "Werezombie",
@@ -243,16 +274,9 @@
     "damage": 1,
     "description": "",
     "danger": 4,
-    "ability": "It will spawn in dark zone closest to the most isolated survivor."
-  },
-  {
-    "name": "Abominarat",
-    "slug": "abominarat",
-    "actions": 1,
-    "damage": 1,
-    "description": "",
-    "danger": 4,
-    "ability": "Spawns 1 Zone away from the noisiest Zone on the board, in a Zone with an open passage to it."
+    "ability": "It will spawn in dark zone closest to the most isolated survivor.",
+    "enabled": true,
+    "group": "ported"
   },
   {
     "name": "Horde Brother",
@@ -282,31 +306,15 @@
     "ability": "Has 2 more actions if has a survivor on line of sight."
   },
   {
-    "name": "Tainted Abomination",
-    "slug": "tainted-abomination",
-    "description": "",
-    "actions": 1,
-    "damage": 1,
-    "danger": 6,
-    "ability": "When killed, Survivors within the same Zone as Tainted Abomination is dealt 1 damage."
-  },
-  {
-    "name": "Orc Abomination",
-    "slug": "orc-abomination",
-    "description": "",
-    "actions": 1,
-    "damage": 3,
-    "danger": 6,
-    "ability": "Damage can’t be prevented."
-  },
-  {
     "name": "Abominabear",
     "slug": "abominabear",
     "description": "",
     "actions": 1,
     "damage": 1,
     "danger": 4,
-    "ability": "The Abominabear immediately performs an extra Activation each time it survives a Melee Action targeting it, or a Ranged Action aimed at its Zone."
+    "ability": "The Abominabear immediately performs an extra Activation each time it survives a Melee Action targeting it, or a Ranged Action aimed at its Zone.",
+    "enabled": true,
+    "group": "ported"
   },
   {
     "name": "Texas Dreadhorn",
@@ -327,13 +335,15 @@
     "ability": "The Bizon deals 1 Wound to each Survivorstanding in Zones it moves into. Spawningdoes not count as a move."
   },
   {
-    "name": "Bloody Bull",
-    "slug": "bloody-bull",
+    "name": "Linebreaker ",
+    "slug": "linebreaker",
     "description": "",
     "actions": 1,
     "damage": 1,
     "danger": 6,
-    "ability": "If the Bloody Bull has Line of Sight on its destination Zone at the start of its Activation, it moves up to 3 Zones to reach it. Set its destination Zone before moving the Bloody Bull. It moves to get there."
+    "ability": "If the Linebreaker has Line of Sight to its destination Zone at the start of its Activation, it charges up to 3 Zones straight toward it. Choose the destination Zone before moving the Linebreaker. It ignores everything else to get there.",
+    "enabled": true,
+    "group": "ported"
   },
   {
     "name": "A-BOMB ABOMINATION",
@@ -381,12 +391,14 @@
     "ability": "Prevents a survivor in it's zone from acting."
   },
   {
-    "name": "Wendigo",
-    "slug": "wendigo",
+    "name": "Fireman #1",
+    "slug": "fireman",
     "description": "",
     "actions": 1,
     "damage": 0,
     "danger": 6,
-    "ability": "-1 die to combat, passive"
+    "ability": "As long as there are other Zombies in the same Zone, this Abomination cannot be targeted by weapons with the Molotov or fire related.",
+    "enabled": true,
+    "group": "custom"
   }
 ]
