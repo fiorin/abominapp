@@ -10,6 +10,7 @@ import { Randomizer } from "@/components/randomizer";
 import AvatarSelector from "@/components/avatarSelector";
 
 const FILTERS = ["default", "expanded", "all", "custom"] as const;
+
 type FilterType = (typeof FILTERS)[number];
 
 export default function RandomPage() {
@@ -47,24 +48,19 @@ export default function RandomPage() {
     }
   };
 
-  // Inicializa includes na primeira carga
   useEffect(() => {
     if (includesParam) {
       setIncludes(includesParam.split(","));
     } else {
       setIncludes(getSlugsByFilter(filter, abominations));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [abominations]);
 
-  // Quando o filtro muda, atualiza includes
   useEffect(() => {
     const expectedIncludes = getSlugsByFilter(filter, abominations);
     setIncludes(expectedIncludes);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
-  // Sincroniza URL quando includes muda
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
 
@@ -77,7 +73,6 @@ export default function RandomPage() {
     }
 
     router.replace(`/random?${params.toString()}`, { scroll: false });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [includes]);
 
   const filtered = useMemo(() => {
