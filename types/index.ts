@@ -15,8 +15,11 @@ export type Group =
 export interface Abomination {
   name: string;
   slug: string;
+  actions: number;
+  damage: number;
   description: string;
-  image: string;
   danger: number;
+  ability: string;
   group: Group;
+  enabled: boolean;
 }

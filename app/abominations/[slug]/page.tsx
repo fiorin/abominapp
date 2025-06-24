@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Progress } from "@heroui/progress";
 import { notFound, useParams } from "next/navigation";
+import { Footprints, Flame } from "lucide-react";
 
 import abominations from "../../../public/db/abominations.json";
 
@@ -59,6 +60,19 @@ export default function AbominationDetailPage() {
           Group
         </p>
       )}
+
+      {/* 🔥 Ícones de Movimento e Dano */}
+      <div className="flex justify-center gap-6 mt-2">
+        <div className="flex items-center gap-1 text-blue-500">
+          actions
+          <Footprints className="w-5 h-5" />
+          <span className="text-lg font-semibold"> {abomination.actions}</span>
+        </div>
+        <div className="flex items-center gap-1 text-red-500">
+          damage <Flame className="w-5 h-5" />
+          <span className="text-lg font-semibold">{abomination.damage}</span>
+        </div>
+      </div>
 
       <p className="mt-4 text-lg text-center text-default-600">
         {abomination.description}

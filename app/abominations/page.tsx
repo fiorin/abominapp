@@ -62,7 +62,6 @@ export default function AbominationPage() {
                   }`}
                   href={`/abominations/${abomination.slug}`}
                 >
-                  {/* Avatar com borda na cor correspondente */}
                   <div className="flex items-center space-x-3">
                     <Image
                       alt={abomination.name}
