@@ -226,7 +226,9 @@
     "damage": 1,
     "description": "",
     "danger": 5,
-    "ability": "The Bearmanboar gets an extra Activation whenever an Abomination card is drawn."
+    "ability": "Bearmanboar spawns even if another Abomination is on the board. Bearmanboar cannot be eliminated as long as another Abomination is on the board.",
+    "group": "exclusive",
+    "enabled": true
   },
   {
     "name": "Actual Cannibal",
@@ -466,6 +468,50 @@
     "damage": 0,
     "danger": 6,
     "ability": "As long as there are other Zombies in the same Zone, this Abomination cannot be targeted by weapons with the Molotov or fire related.",
+    "enabled": true,
+    "group": "custom"
+  },
+  {
+    "name": "Trejobomination",
+    "slug": "trejobomination",
+    "description": "",
+    "actions": 1,
+    "damage": 1,
+    "danger": 6,
+    "ability": "When this card is drawn, the closest Walker to any Survivor is replaced with the Trejobomination. Then, draw another Zombie card.",
+    "enabled": true,
+    "group": "expansion"
+  },
+  {
+    "name": "Elke-Volker",
+    "slug": "elke-volker",
+    "description": "",
+    "actions": 1,
+    "damage": 1,
+    "danger": 6,
+    "ability": "Target priority order: Runners. When Elke Volker is eliminated, reshuffle the Abomination deck with the discard pile. Elke Volker spanws in the noisiest Zone on the board. She attacks after spanwning. Elke Volker attacks all Zones at Range 0-1, dealing 1 wound to each Survivor within the Range.",
+    "enabled": false,
+    "group": "requested"
+  },
+  {
+    "name": "Big Harley",
+    "slug": "big-harley",
+    "description": "",
+    "actions": 1,
+    "damage": 1,
+    "danger": 3,
+    "ability": "Moves 2 Zones in a straight line toward target. Stops if hitting a Wall, Door, or Survivor. Attacks normally if ending in a Zone with Survivors.",
+    "enabled": true,
+    "group": "custom"
+  },
+  {
+    "name": "Don Crooner",
+    "slug": "don-crooner",
+    "description": "",
+    "actions": 1,
+    "damage": 1,
+    "danger": 4,
+    "ability": "At the end of each Zombie`s Activation, all Zombies within Line of Sight move on Zone toward him.",
     "enabled": true,
     "group": "custom"
   }

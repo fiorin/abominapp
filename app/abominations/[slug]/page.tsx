@@ -20,7 +20,7 @@ export default function AbominationDetailPage() {
     exclusive: "text-purple-500",
     ported: "text-blue-500",
     custom: "text-green-500",
-    pending: "text-red-500",
+    requested: "text-red-500",
   };
 
   const dangerLevels = ["Low", "Medium", "High", "Critical"];
@@ -53,7 +53,7 @@ export default function AbominationDetailPage() {
 
       {abomination.group && (
         <p
-          className={`text-lg font-semibold text-center mt-2 ${groupColorClass}`}
+          className={`text-xs font-semibold text-center mt-2 ${groupColorClass}`}
         >
           {abomination.group.charAt(0).toUpperCase() +
             abomination.group.slice(1)}{" "}
@@ -74,20 +74,23 @@ export default function AbominationDetailPage() {
         </div>
       </div>
 
-      <p className="mt-4 text-lg text-center text-default-600">
+      <p className="mt-4 text-md text-center text-default-800">
+        {abomination.ability}
+      </p>
+
+      <p className="mt-4 text-sm text-center text-default-500">
         {abomination.description}
       </p>
 
-      <div className="mt-6 text-center space-y-2">
-        <span className="text-lg font-semibold">Danger Level</span>
+      {/* <div className="mt-6 text-center space-y-2">
+        <span className="text-sm font-semibold">Danger Level</span>
         <Progress
-          showValueLabel
           className="w-full max-w-md mx-auto"
           color={dangerColor}
           label={dangerLabel}
           value={(abomination.danger || 1) * 10}
         />
-      </div>
+      </div> */}
     </section>
   );
 }

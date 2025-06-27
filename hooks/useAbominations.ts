@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 
 import { Abomination } from "@/types";
 
-const GROUP_ORDER = ["default", "expansion", "exclusive", "custom", "ported"];
+const GROUP_ORDER = [
+  "default",
+  "expansion",
+  "exclusive",
+  "custom",
+  "ported",
+  "requested",
+];
 
 function groupIndex(group: string) {
   const idx = GROUP_ORDER.indexOf(group);

@@ -10,6 +10,7 @@ export type Group =
   | "expansion"
   | "ported"
   | "custom"
+  | "requested"
   | "pending";
 
 export interface Abomination {

@@ -47,10 +47,10 @@ export default function RootLayout({
             <main className="container mx-auto max-w-7xl pt-2 px-6 flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
+            <footer className="w-full flex items-center justify-center py-2">
               <Link
                 isExternal
-                className="flex items-center gap-1 text-current"
+                className="flex items-center gap-1 text-current text-xs"
                 href="https://fior.in"
                 title="Fior.in"
               >

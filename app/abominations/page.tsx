@@ -8,17 +8,15 @@ import { useAbominations } from "@/hooks/useAbominations";
 export default function AbominationPage() {
   const { abominations } = useAbominations();
 
-  // Mapeamento de cores para os grupos
   const groupColors: Record<string, string> = {
     default: "text-yellow-500 border-yellow-500",
     expansion: "text-orange-500 border-orange-500",
     exclusive: "text-purple-500 border-purple-500",
     ported: "text-blue-500 border-blue-500",
     custom: "text-green-500 border-green-500",
-    pending: "text-red-500 border-red-500",
+    requested: "text-red-500 border-red-500",
   };
 
-  // Agrupamento por `group`
   const grouped = abominations.reduce<Record<string, typeof abominations>>(
     (acc, abomination) => {
       const group = abomination.group || "default";
@@ -31,14 +29,13 @@ export default function AbominationPage() {
     {},
   );
 
-  // Ordem dos grupos
   const groupOrder = [
     "default",
     "exclusive",
     "expansion",
     "ported",
     "custom",
-    "pending",
+    "requested",
   ];
   const sortedGroups = groupOrder.filter((group) => grouped[group]);
 
@@ -46,7 +43,6 @@ export default function AbominationPage() {
     <section className="py-2 space-y-10">
       {sortedGroups.map((group) => (
         <div key={group}>
-          {/* Título do grupo com cor correspondente */}
           <h2
             className={`text-2xl font-bold ${groupColors[group].split(" ")[0]} mb-4 py-2 px-4 rounded`}
           >
