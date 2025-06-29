@@ -24,3 +24,51 @@
 .animate-shake {
   animation: shake 0.5s ease-in-out;
 }
+
+.text-yellow-500 {
+  color: #f59e0b; /* Tailwind yellow-500 */
+}
+
+.border-yellow-500 {
+  border-color: #f59e0b;
+}
+
+.text-orange-500 {
+  color: #f97316; /* Tailwind orange-500 */
+}
+
+.border-orange-500 {
+  border-color: #f97316;
+}
+
+.text-purple-500 {
+  color: #a855f7; /* Tailwind purple-500 */
+}
+
+.border-purple-500 {
+  border-color: #a855f7;
+}
+
+.text-blue-500 {
+  color: #3b82f6; /* Tailwind blue-500 */
+}
+
+.border-blue-500 {
+  border-color: #3b82f6;
+}
+
+.text-green-500 {
+  color: #22c55e; /* Tailwind green-500 */
+}
+
+.border-green-500 {
+  border-color: #22c55e;
+}
+
+.text-red-500 {
+  color: #ef4444; /* Tailwind red-500 */
+}
+
+.border-red-500 {
+  border-color: #ef4444;
+}

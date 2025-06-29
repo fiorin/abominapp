@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+
 import { useAbominations } from "@/hooks/useAbominations";
 import { Randomizer } from "@/components/randomizer";
+import RandomAvatars from "@/components/randomAvatar";
 
 export default function Home() {
   const { abominations } = useAbominations();
@@ -13,10 +15,11 @@ export default function Home() {
 
       <p className="text-muted-foreground text-md">
         or use our{" "}
-        <Link href="/random" className="text-warning underline">
+        <Link className="text-warning underline" href="/random">
           custom randomizer
         </Link>
       </p>
+      <RandomAvatars abominations={abominations} count={3} />
     </section>
   );
 }

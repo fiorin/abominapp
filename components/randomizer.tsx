@@ -24,6 +24,7 @@ export function Randomizer({ items, onClick }: RandomizerProps) {
     if (!items.length) return;
 
     const random = items[Math.floor(Math.random() * items.length)];
+
     setSelected(random);
   };
 

@@ -35,10 +35,12 @@ export const NavLinks = ({
 
   if (variant === "mobile") {
     return (
-      <div className="mx-4 mt-4 flex flex-col gap-2">
+      <div className="mx-4 mt-6 flex flex-col gap-4">
         {navItems.map((item) => (
           <NavbarMenuItem key={item.href}>
-            <NextLink href={item.href}>{item.label}</NextLink>
+            <NextLink className="text-lg py-2 block" href={item.href}>
+              {item.label}
+            </NextLink>
           </NavbarMenuItem>
         ))}
       </div>

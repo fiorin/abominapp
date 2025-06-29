@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { Link } from "@heroui/link";
 import clsx from "clsx";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Providers } from "./providers";
 
@@ -61,6 +62,7 @@ export default function RootLayout({
           </div>
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-TKJZPW775T" />
     </html>
   );
 }

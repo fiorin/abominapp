@@ -1,18 +1,15 @@
-import Image from "next/image";
-import clsx from "clsx";
-
-interface Abomination {
-  slug: string;
-  name: string;
-}
+import Avatar from "@/components/avatar";
+import { Abomination } from "@/types";
+import { groupColors } from "@/config/constants";
 
 interface AvatarSelectorProps {
   abominations: Abomination[];
   includes: string[];
+
   onChange: (slug: string) => void;
 }
 
-export default function avatarSelector({
+export default function AvatarSelector({
   abominations,
   includes,
   onChange,
@@ -21,29 +18,20 @@ export default function avatarSelector({
     <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
       {abominations.map((abomination) => {
         const isActive = includes.includes(abomination.slug);
+        // extrai a cor da borda do grupo, fallback para default
+        const borderColorClass =
+          groupColors[abomination.group] || groupColors["default"];
+        // borda está na segunda parte da string do grupo, ex: "text-yellow-500 border-yellow-500"
+        const borderColor = borderColorClass.split(" ")[1];
 
         return (
-          <button
+          <Avatar
             key={abomination.slug}
-            aria-label={`${abomination.name} ${isActive ? "selected" : "not selected"}`}
-            aria-pressed={isActive}
-            className={clsx(
-              "rounded-full border-2 p-1 transition",
-              isActive ? "border-danger" : "border-muted",
-            )}
+            abomination={abomination}
+            active={isActive}
+            borderColor={borderColor}
             onClick={() => onChange(abomination.slug)}
-          >
-            <Image
-              alt={abomination.name}
-              className={clsx(
-                "w-12 h-12 rounded-full object-cover",
-                !isActive && "grayscale opacity-50",
-              )}
-              height={48}
-              src={`/images/icons/${abomination.slug}.png`}
-              width={48}
-            />
-          </button>
+          />
         );
       })}
     </div>

@@ -15,13 +15,16 @@ export default function Error({
   }, [error]);
 
   return (
-    <section className="flex flex-col items-center justify-center gap-6 py-20 text-center">
-      <h1 className="text-4xl font-bold text-danger">Something went wrong</h1>
-      <p className="text-default-500 max-w-md">
-        An unexpected error occurred. Try reloading the page or coming back
+    <section className="flex flex-col items-center justify-center gap-6 py-20 px-4 max-w-3xl mx-auto text-center">
+      <h1 className="text-5xl font-extrabold text-danger">Oops!</h1>
+      <h2 className="text-3xl font-semibold text-default-900">
+        Something went wrong
+      </h2>
+      <p className="text-md text-default-500 max-w-lg">
+        An unexpected error occurred. Please try reloading the page or come back
         later.
       </p>
-      <Button color="danger" onClick={reset}>
+      <Button color="danger" size="lg" onClick={reset}>
         Try again
       </Button>
     </section>

@@ -1,96 +1,81 @@
 "use client";
 
 import Image from "next/image";
-import { Progress } from "@heroui/progress";
 import { notFound, useParams } from "next/navigation";
 import { Footprints, Flame } from "lucide-react";
 
-import abominations from "../../../public/db/abominations.json";
+import abominationsJson from "../../../public/db/abominations.json";
+import { getAbominationsByGroup } from "../../../utils/utils";
+
+import { groupColors } from "@/config/constants";
+import { Abomination } from "@/types";
+import RandomAvatars from "@/components/randomAvatar";
 
 export default function AbominationDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const abominations = abominationsJson as Abomination[];
 
   const abomination = abominations.find((a) => a.slug === slug);
 
   if (!abomination) return notFound();
 
-  const groupColors: Record<string, string> = {
-    default: "text-yellow-500",
-    expansion: "text-orange-500",
-    exclusive: "text-purple-500",
-    ported: "text-blue-500",
-    custom: "text-green-500",
-    requested: "text-red-500",
-  };
+  const {
+    name,
+    group,
+    slug: abSlug,
+    actions,
+    damage,
+    ability,
+    description,
+  } = abomination;
 
-  const dangerLevels = ["Low", "Medium", "High", "Critical"];
-  const dangerColors: Array<"success" | "warning" | "danger" | "secondary"> = [
-    "success",
-    "warning",
-    "danger",
-    "secondary",
-  ];
-  const dangerLabel =
-    dangerLevels[Math.floor((abomination.danger / 10) * dangerLevels.length)];
-  const dangerColor =
-    dangerColors[Math.floor((abomination.danger / 10) * dangerColors.length)];
+  const groupClass = groupColors[group ?? "default"];
+  const groupLabel = `${group?.charAt(0).toUpperCase() + group?.slice(1)} Group`;
 
-  const groupColorClass = groupColors[abomination.group || "default"];
-  const imageSrc = `/images/abominations/${abomination.slug}.png`;
+  const related = getAbominationsByGroup(abominations, group, abSlug);
+  const imgSrc = `/images/abominations/${abSlug}.png`;
 
   return (
     <section className="max-w-3xl mx-auto py-10 px-4">
       <Image
-        alt={abomination.name}
+        alt={name}
         className="rounded-xl mx-auto"
         height={400}
-        src={imageSrc}
+        src={imgSrc}
         width={300}
       />
-      <h1 className="text-4xl font-bold text-center mt-6">
-        {abomination.name}
-      </h1>
 
-      {abomination.group && (
-        <p
-          className={`text-xs font-semibold text-center mt-2 ${groupColorClass}`}
-        >
-          {abomination.group.charAt(0).toUpperCase() +
-            abomination.group.slice(1)}{" "}
-          Group
-        </p>
-      )}
+      <h1 className="text-4xl font-bold text-center mt-6">{name}</h1>
 
-      {/* 🔥 Ícones de Movimento e Dano */}
       <div className="flex justify-center gap-6 mt-2">
         <div className="flex items-center gap-1 text-blue-500">
-          actions
-          <Footprints className="w-5 h-5" />
-          <span className="text-lg font-semibold"> {abomination.actions}</span>
+          actions <Footprints className="w-5 h-5" />
+          <span className="text-lg font-semibold">{actions}</span>
         </div>
         <div className="flex items-center gap-1 text-red-500">
           damage <Flame className="w-5 h-5" />
-          <span className="text-lg font-semibold">{abomination.damage}</span>
+          <span className="text-lg font-semibold">{damage}</span>
         </div>
       </div>
 
-      <p className="mt-4 text-md text-center text-default-800">
-        {abomination.ability}
-      </p>
+      {group && (
+        <p className={`text-xs font-semibold text-center mt-2 ${groupClass}`}>
+          {groupLabel}
+        </p>
+      )}
 
-      <p className="mt-4 text-sm text-center text-default-500">
-        {abomination.description}
-      </p>
+      <p className="mt-4 text-md text-center text-default-800">{ability}</p>
+      <p className="mt-4 text-sm text-center text-default-500">{description}</p>
 
-      {/* <div className="mt-6 text-center space-y-2">
-        <span className="text-sm font-semibold">Danger Level</span>
-        <Progress
-          className="w-full max-w-md mx-auto"
-          color={dangerColor}
-          label={dangerLabel}
-          value={(abomination.danger || 1) * 10}
-        />
-      </div> */}
+      {related.length > 0 && (
+        <>
+          <hr className="my-8 border-t border-default-300" />
+          <h4 className="text-sm text-center mt-6 mb-4">
+            Other <span className={groupClass}>{groupLabel}</span> Abominations
+          </h4>
+          <RandomAvatars abominations={related} count={3} />
+        </>
+      )}
     </section>
   );
 }

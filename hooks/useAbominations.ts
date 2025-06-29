@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
-import { Abomination } from "@/types";
+import { Abomination, Group } from "@/types";
 
-const GROUP_ORDER = [
+const GROUP_ORDER: Group[] = [
   "default",
   "expansion",
   "exclusive",
@@ -11,47 +11,59 @@ const GROUP_ORDER = [
   "requested",
 ];
 
-function groupIndex(group: string) {
-  const idx = GROUP_ORDER.indexOf(group);
+function groupIndex(group: string): number {
+  const idx = GROUP_ORDER.indexOf(group as Group);
 
   return idx !== -1 ? idx : GROUP_ORDER.length;
 }
 
 export function useAbominations(onlyEnabled: boolean = true) {
   const [abominations, setAbominations] = useState<Abomination[]>([]);
+  const isMounted = useRef(true);
+
+  const sortAbominations = useCallback((data: Abomination[]) => {
+    return data.slice().sort((a, b) => {
+      const groupA = groupIndex(a.group);
+      const groupB = groupIndex(b.group);
+
+      if (groupA !== groupB) return groupA - groupB;
+
+      if (groupA === GROUP_ORDER.length) {
+        const cmp = a.group.localeCompare(b.group);
+
+        if (cmp !== 0) return cmp;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
+  }, []);
 
   useEffect(() => {
-    fetch("/db/abominations.json")
-      .then((res) => res.json())
-      .then((data: Abomination[]) => {
-        const filtered = onlyEnabled
-          ? data.filter((abom) => abom.enabled)
-          : data;
+    isMounted.current = true;
 
-        filtered.sort((a, b) => {
-          const groupA = groupIndex(a.group);
-          const groupB = groupIndex(b.group);
+    async function fetchAbominations() {
+      try {
+        const res = await fetch("/db/abominations.json");
 
-          if (groupA !== groupB) {
-            return groupA - groupB;
-          }
+        if (!res.ok) throw new Error("Failed to fetch abominations");
 
-          // Se ambos estão em grupos não listados, ordena por nome do grupo
-          if (groupA === GROUP_ORDER.length) {
-            const groupCompare = a.group.localeCompare(b.group);
+        const data: Abomination[] = await res.json();
+        const filtered = onlyEnabled ? data.filter((a) => a.enabled) : data;
+        const sorted = sortAbominations(filtered);
 
-            if (groupCompare !== 0) {
-              return groupCompare;
-            }
-          }
+        if (isMounted.current) setAbominations(sorted);
+      } catch (error) {
+        console.error("Error loading abominations:", error);
+        if (isMounted.current) setAbominations([]);
+      }
+    }
 
-          // Desempate final: ordem alfabética pelo nome
-          return a.name.localeCompare(b.name);
-        });
+    fetchAbominations();
 
-        setAbominations(filtered);
-      });
-  }, [onlyEnabled]);
+    return () => {
+      isMounted.current = false;
+    };
+  }, [onlyEnabled, sortAbominations]);
 
   return { abominations };
 }
