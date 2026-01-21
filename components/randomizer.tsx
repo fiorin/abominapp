@@ -16,7 +16,7 @@ type RandomizerProps = {
   onClick?: (item: Item) => void;
 };
 
-export function Randomizer({ items, onClick }: RandomizerProps) {
+export function Randomizer({ items, onClick: _onClick }: RandomizerProps) {
   const router = useRouter();
   const [selected, setSelected] = useState<Item>();
 
@@ -31,8 +31,8 @@ export function Randomizer({ items, onClick }: RandomizerProps) {
   const handleClick = () => {
     if (!selected) return;
 
-    if (onClick) {
-      onClick(selected);
+    if (_onClick) {
+      _onClick(selected);
     } else if (selected.slug !== "placeholder") {
       router.push(`/abominations/${selected.slug}`);
     }
@@ -49,14 +49,20 @@ export function Randomizer({ items, onClick }: RandomizerProps) {
         <Image
           key={slug}
           alt={name}
+          blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23333' width='300' height='400'/%3E%3C/svg%3E"
           className={clsx(
             "rounded-xl cursor-pointer transition duration-300",
             "animate-shake",
           )}
           height={400}
+          onClick={handleClick}
+          onError={() => {
+            // Image failed to load - handled by next/image fallback
+          }}
+          placeholder="blur"
+          priority={true}
           src={`/images/abominations/${slug}.png`}
           width={300}
-          onClick={handleClick}
         />
       </div>
       <Button color="danger" size="lg" onClick={randomize}>

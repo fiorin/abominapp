@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Tooltip } from "@heroui/tooltip";
 
 import Avatar from "@/components/avatar";
-import { groupColors } from "@/config/constants";
+import { GROUP_CONFIG } from "@/config/constants";
 
 interface Abomination {
   slug: string;
@@ -57,8 +57,8 @@ export default function RandomAvatars({
   return (
     <div className="flex justify-center gap-4">
       {randomAbominations.map((abomination) => {
-        const borderColor =
-          groupColors[abomination.group]?.split(" ")[1] ?? "border-muted";
+        const group = (abomination.group ?? "default") as keyof typeof GROUP_CONFIG;
+        const borderColor = GROUP_CONFIG[group].border;
 
         return (
           <Avatar

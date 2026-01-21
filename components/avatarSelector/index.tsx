@@ -1,28 +1,24 @@
 import Avatar from "@/components/avatar";
 import { Abomination } from "@/types";
-import { groupColors } from "@/config/constants";
+import { GROUP_CONFIG } from "@/config/constants";
 
 interface AvatarSelectorProps {
   abominations: Abomination[];
-  includes: string[];
-
+  selectedSlugsSet: Set<string>;
   onChange: (slug: string) => void;
 }
 
 export default function AvatarSelector({
   abominations,
-  includes,
+  selectedSlugsSet,
   onChange,
 }: AvatarSelectorProps) {
   return (
     <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
       {abominations.map((abomination) => {
-        const isActive = includes.includes(abomination.slug);
-        // extrai a cor da borda do grupo, fallback para default
-        const borderColorClass =
-          groupColors[abomination.group] || groupColors["default"];
-        // borda está na segunda parte da string do grupo, ex: "text-yellow-500 border-yellow-500"
-        const borderColor = borderColorClass.split(" ")[1];
+        const isActive = selectedSlugsSet.has(abomination.slug);
+        const group = (abomination.group ?? "default") as keyof typeof GROUP_CONFIG;
+        const borderColor = GROUP_CONFIG[group].border;
 
         return (
           <Avatar

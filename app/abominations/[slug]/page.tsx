@@ -7,7 +7,7 @@ import { Footprints, Flame } from "lucide-react";
 import abominationsJson from "../../../public/db/abominations.json";
 import { getAbominationsByGroup } from "../../../utils/utils";
 
-import { groupColors } from "@/config/constants";
+import { GROUP_CONFIG } from "@/config/constants";
 import { Abomination } from "@/types";
 import RandomAvatars from "@/components/randomAvatar";
 
@@ -29,8 +29,9 @@ export default function AbominationDetailPage() {
     description,
   } = abomination;
 
-  const groupClass = groupColors[group ?? "default"];
-  const groupLabel = `${group?.charAt(0).toUpperCase() + group?.slice(1)} Group`;
+  const groupConfig = GROUP_CONFIG[group ?? "default"];
+  const groupClass = `${groupConfig.text} ${groupConfig.border}`;
+  const groupLabel = `${groupConfig.label} Group`;
 
   const related = getAbominationsByGroup(abominations, group, abSlug);
   const imgSrc = `/images/abominations/${abSlug}.png`;
@@ -43,6 +44,9 @@ export default function AbominationDetailPage() {
         height={400}
         src={imgSrc}
         width={300}
+        priority={true}
+        placeholder="blur"
+        blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23333' width='300' height='400'/%3E%3C/svg%3E"
       />
 
       <h1 className="text-4xl font-bold text-center mt-6">{name}</h1>

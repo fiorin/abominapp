@@ -12,9 +12,9 @@ export default function RandomPage() {
 
   const {
     filter,
-    includes,
+    selectedSlugsSet,
     filtered,
-    toggleInclude,
+    toggleAbomination,
     handleFilterChange,
     FILTERS,
   } = useRandom(abominations);
@@ -26,8 +26,8 @@ export default function RandomPage() {
           <Button
             key={f}
             color={f === filter ? "danger" : "default"}
-            variant={f === filter ? "solid" : "bordered"}
             onClick={() => handleFilterChange(f)}
+            variant={f === filter ? "solid" : "bordered"}
           >
             {f.charAt(0).toUpperCase() + f.slice(1)}
           </Button>
@@ -38,8 +38,8 @@ export default function RandomPage() {
 
       <AvatarSelector
         abominations={abominations}
-        includes={includes}
-        onChange={toggleInclude}
+        onChange={toggleAbomination}
+        selectedSlugsSet={selectedSlugsSet}
       />
     </section>
   );
