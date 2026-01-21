@@ -81,6 +81,8 @@
   {
     "name": "Batabomination",
     "slug": "batabomination",
+    "actions": 1,
+    "damage": 1,
     "description": "",
     "danger": 3,
     "ability": "The Batabomination cannot trace Lines Of Sight. Each time the Batabomination gets an Activation, check the Zone with the most Noise tokens. Batabomination has as much Actions as Noise tokens in the corresponding Zone.",

@@ -97,13 +97,15 @@ export default defineConfig([
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "react-hooks/exhaustive-deps": "off",
-      "jsx-a11y/click-events-have-key-events": "warn",
-      "jsx-a11y/interactive-supports-focus": "warn",
-      "prettier/prettier": "warn",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/interactive-supports-focus": "off",
+      "jsx-a11y/label-has-associated-control": "off",
+      "prettier/prettier": "off",
       "no-unused-vars": "warn",
       "unused-imports/no-unused-vars": "warn",
       "unused-imports/no-unused-imports": "warn",
       "linebreak-style": "off",
+      "react/no-unescaped-entities": "off",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",

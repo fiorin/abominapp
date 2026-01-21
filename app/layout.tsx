@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Providers } from "./providers";
+import PWARegister from "./pwa-register";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
@@ -16,8 +17,19 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  metadataBase: new URL("https://abominapp.fior.in"),
+  manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
+    apple: "/icons/icon-192x192.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: siteConfig.name,
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 
@@ -26,6 +38,10 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -35,7 +51,21 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        {/* PWA Meta Tags */}
+        <meta name="application-name" content={siteConfig.name} />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta
+          name="apple-mobile-web-app-title"
+          content={siteConfig.name}
+        />
+        <meta name="theme-color" content="#1e293b" />
+        <meta name="mobile-web-app-capable" content="yes" />
+      </head>
       <body
         className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",
@@ -60,6 +90,7 @@ export default function RootLayout({
               </Link>
             </footer>
           </div>
+          <PWARegister />
         </Providers>
       </body>
       <GoogleAnalytics gaId="G-TKJZPW775T" />

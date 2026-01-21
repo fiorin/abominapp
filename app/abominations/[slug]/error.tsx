@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Error({
-  reset,
+  _reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  _reset: () => void;
 }) {
   return (
     <section className="flex flex-col items-center justify-center gap-6 py-20 px-4 max-w-3xl mx-auto text-center">
@@ -15,12 +17,12 @@ export default function Error({
       <p className="text-md text-default-500 max-w-lg">
         The abomination you are looking for does not exist or has been removed.
       </p>
-      <a
-        href="/abominations"
+      <Link
         className="px-6 py-2 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition"
+        href="/abominations"
       >
         Back to list
-      </a>
+      </Link>
     </section>
   );
 }

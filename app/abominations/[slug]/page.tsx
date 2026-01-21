@@ -1,21 +1,34 @@
 "use client";
 
+import { useMemo } from "react";
 import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
-import { Footprints, Flame } from "lucide-react";
+import { Flame, Footprints } from "lucide-react";
 
 import abominationsJson from "../../../public/db/abominations.json";
 import { getAbominationsByGroup } from "../../../utils/utils";
 
 import { GROUP_CONFIG } from "@/config/constants";
 import { Abomination } from "@/types";
+import { useFavorites } from "@/hooks/useFavorites";
 import RandomAvatars from "@/components/randomAvatar";
+import FavoriteButton from "@/components/favoriteButton";
 
 export default function AbominationDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const abominations = abominationsJson as Abomination[];
 
-  const abomination = abominations.find((a) => a.slug === slug);
+  const abomination = useMemo(
+    () => abominations.find((a) => a.slug === slug),
+    [abominations, slug]
+  );
+
+  const related = useMemo(() => {
+    if (!abomination) return [];
+
+    return getAbominationsByGroup(abominations, abomination.group, abomination.slug);
+  }, [abominations, abomination]);
 
   if (!abomination) return notFound();
 
@@ -27,14 +40,15 @@ export default function AbominationDetailPage() {
     damage,
     ability,
     description,
+    danger,
   } = abomination;
 
   const groupConfig = GROUP_CONFIG[group ?? "default"];
   const groupClass = `${groupConfig.text} ${groupConfig.border}`;
   const groupLabel = `${groupConfig.label} Group`;
 
-  const related = getAbominationsByGroup(abominations, group, abSlug);
   const imgSrc = `/images/abominations/${abSlug}.png`;
+  const favorited = isFavorite(abSlug);
 
   return (
     <section className="max-w-3xl mx-auto py-10 px-4">
@@ -56,9 +70,13 @@ export default function AbominationDetailPage() {
           actions <Footprints className="w-5 h-5" />
           <span className="text-lg font-semibold">{actions}</span>
         </div>
-        <div className="flex items-center gap-1 text-red-500">
+        <div className="flex items-center gap-1 text-yellow-500">
           damage <Flame className="w-5 h-5" />
           <span className="text-lg font-semibold">{damage}</span>
+        </div>
+        <div className="flex items-center gap-1 text-red-500">
+          danger <Flame className="w-5 h-5" />
+          <span className="text-lg font-semibold">{danger}</span>
         </div>
       </div>
 
@@ -67,6 +85,14 @@ export default function AbominationDetailPage() {
           {groupLabel}
         </p>
       )}
+
+      {/* Favorite Button */}
+      <div className="flex justify-center mt-4">
+        <FavoriteButton
+          isFavorite={favorited}
+          onClick={() => toggleFavorite(abSlug)}
+        />
+      </div>
 
       <p className="mt-4 text-md text-center text-default-800">{ability}</p>
       <p className="mt-4 text-sm text-center text-default-500">{description}</p>

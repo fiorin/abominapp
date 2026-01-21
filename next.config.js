@@ -2,7 +2,7 @@
 const nextConfig = {
   // Image optimization configuration
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
@@ -25,7 +25,7 @@ const nextConfig = {
   // Allow build to continue with ESLint warnings
   eslint: {
     ignoreDuringBuilds: false,
-    dirs: ['app', 'components', 'hooks', 'utils', 'config'],
+    dirs: ["app", "components", "hooks", "utils", "config"],
   },
 };
 

@@ -6,6 +6,9 @@ import clsx from "clsx";
 const navItems = [
   { label: "Randomizer", href: "/random" },
   { label: "Abominations", href: "/abominations" },
+  { label: "Favorites", href: "/favorites" },
+  { label: "Compare", href: "/compare" },
+  { label: "Statistics", href: "/statistics" },
 ];
 
 export const NavLinks = ({
